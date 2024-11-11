@@ -4,7 +4,7 @@ import HomeSectionCard from "../homesectioncard/HomeSectionCard";
 import { Button } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
-const HomeSectionCarusel = ({ data }) => {
+const HomeSectionCarusel = ({ data, nameSection }) => {
   const carouselRef = useRef(null); // Add ref to access AliceCarousel methods
 
   const responsive = {
@@ -21,7 +21,10 @@ const HomeSectionCarusel = ({ data }) => {
     .map((item) => <HomeSectionCard product={item} />);
 
   return (
-    <div className="relative px-4 lg:px-8">
+    <div className="border relative px-4 lg:px-8">
+      <h2 className="text-2xl text-gray-900 text-start py-5 font-semibold">
+        {nameSection}
+      </h2>
       <div className="relative p-5">
         <AliceCarousel
           ref={carouselRef} // Attach the ref to AliceCarousel
