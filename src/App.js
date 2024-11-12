@@ -6,6 +6,7 @@ import { Mens_Kurta } from "../src/data/Mens_kurta";
 import Footer from "./customer/compoennts/footer/Footer";
 import HomePage from "./homepage/HomePage";
 import Product from "./customer/compoennts/product/Product";
+import ProductDetails from "./customer/compoennts/productdetails/ProductDetails";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Navbar />
       <MainCarusel />
       {/* <HomePage /> */}
-      <Product />
+      {/* <Product /> */}
+      <ProductDetails />
       <Footer />
     </div>
   );
