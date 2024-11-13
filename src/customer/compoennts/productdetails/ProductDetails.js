@@ -24,7 +24,8 @@
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { Radio, RadioGroup } from "@headlessui/react";
-import { Button, Rating } from "@mui/material";
+import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
+import ProductReviewCard from "./ProductReviewCard";
 const product = {
   name: "Basic Tee 6-Pack",
   price: "$192",
@@ -84,7 +85,7 @@ export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white lg:px-20">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
           <ol
@@ -285,6 +286,228 @@ export default function ProductDetails() {
                 <div className="mt-4 space-y-6">
                   <p className="text-sm text-gray-600">{product.details}</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ratings and review */}
+        <secition>
+          <h1 className="text-lg font-semibold pb-4">
+            Recient Review & Rating
+          </h1>
+          <div className="border p-5">
+            <Grid container spacing={7}>
+              <Grid item xs={7}>
+                <div className="space-y-10">
+                  {[1, 1, 1, 1].map((item) => (
+                    <ProductReviewCard />
+                  ))}
+                </div>
+              </Grid>
+              <Grid item xs={5}>
+                <h1 className="text-xl font-semibold pb-1">Product Ratings</h1>
+
+                <div className="flex items-center space-x-3">
+                  <Rating value={4.6} readOnly precision={0.5} />
+                  <p className="opacity-50">4355 Ratings</p>
+                </div>
+
+                <Box className="flex flex-col space-y-3 mt-5">
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>Excellent</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: "4",
+                          height: "7",
+                        }}
+                        variant="determinate"
+                        value={40}
+                        color="success"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>very good</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: "4",
+                          height: "7",
+                        }}
+                        variant="determinate"
+                        value={35}
+                        className="to-blue-800"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>Good</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: "4",
+                          height: "7",
+                        }}
+                        variant="determinate"
+                        value={25}
+                        className="bg-yellow-500"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>Avergae</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: "4",
+                          height: "7",
+                        }}
+                        variant="determinate"
+                        value={20}
+                        color="warning"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>poor</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: "4",
+                          height: "7",
+                        }}
+                        variant="determinate"
+                        value={15}
+                        color="error"
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Grid>
+            </Grid>
+          </div>
+        </secition>
+
+        {/*  */}
+        <section className="my-40">
+          <div className="max-w-[1105px] mx-auto px-4">
+            <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md">
+              {/* Table for medium and larger screens */}
+              <table className="w-full hidden md:table border-collapse">
+                <thead>
+                  <tr className="border-b bg-gray-100">
+                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
+                      No
+                    </th>
+                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
+                      Date
+                    </th>
+                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
+                      Winner Count
+                    </th>
+                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
+                      Condition
+                    </th>
+                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* Example row */}
+                  <tr className="border-b">
+                    <td className="py-3 px-4">1</td>
+                    <td className="py-3 px-4">Sep-2023</td>
+                    <td className="py-3 px-4">
+                      110 winners
+                      <br />
+                      20 referrals
+                    </td>
+                    <td className="py-3 px-4">Minimum 3 referrals</td>
+                    <td className="py-3 px-4">
+                      <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
+                        View List
+                      </button>
+                    </td>
+                  </tr>
+                  {/* Add more rows as needed */}
+                </tbody>
+              </table>
+
+              {/* Responsive mobile card layout */}
+              <div className="md:hidden">
+                {/* Mobile card example */}
+                <div className="bg-white shadow-lg rounded-lg p-4 mb-4 border border-gray-200">
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="text-gray-600 font-semibold">No</span>
+                    <span>1</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b">
+                    <span className="text-gray-600 font-semibold">Date</span>
+                    <span>Sep-2023</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b">
+                    <span className="text-gray-600 font-semibold">
+                      Winner Count
+                    </span>
+                    <span>110 winners, 20 referrals</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b">
+                    <span className="text-gray-600 font-semibold">
+                      Condition
+                    </span>
+                    <span>Minimum 3 referrals</span>
+                  </div>
+                  <div className="flex justify-between items-center pt-2">
+                    <span className="text-gray-600 font-semibold">Action</span>
+                    <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
+                      View List
+                    </button>
+                  </div>
+                </div>
+                {/* Add more mobile card rows as needed */}
               </div>
             </div>
           </div>

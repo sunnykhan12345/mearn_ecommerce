@@ -329,6 +329,7 @@ export default function Product(value, sectionId) {
               </div>
             </div>
           </section>
+
         </main>
       </div>
     </div>
