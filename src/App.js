@@ -7,15 +7,17 @@ import Footer from "./customer/compoennts/footer/Footer";
 import HomePage from "./homepage/HomePage";
 import Product from "./customer/compoennts/product/Product";
 import ProductDetails from "./customer/compoennts/productdetails/ProductDetails";
+import Cart from "./customer/compoennts/cart/Cart";
 
 function App() {
   return (
     <div className="">
       <Navbar />
-      <MainCarusel />
+      {/* <MainCarusel /> */}
       {/* <HomePage /> */}
       {/* <Product /> */}
-      <ProductDetails />
+      {/* <ProductDetails /> */}
+      <Cart />
       <Footer />
     </div>
   );

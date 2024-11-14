@@ -26,6 +26,8 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
 import ProductReviewCard from "./ProductReviewCard";
+import { Mens_Kurta } from "../../../data/Mens_kurta";
+import HomeSectionCard from "../homesectioncard/HomeSectionCard";
 const product = {
   name: "Basic Tee 6-Pack",
   price: "$192",
@@ -430,86 +432,14 @@ export default function ProductDetails() {
           </div>
         </secition>
 
-        {/*  */}
-        <section className="my-40">
-          <div className="max-w-[1105px] mx-auto px-4">
-            <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md">
-              {/* Table for medium and larger screens */}
-              <table className="w-full hidden md:table border-collapse">
-                <thead>
-                  <tr className="border-b bg-gray-100">
-                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
-                      No
-                    </th>
-                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
-                      Date
-                    </th>
-                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
-                      Winner Count
-                    </th>
-                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
-                      Condition
-                    </th>
-                    <th className="py-2 px-4 text-left text-gray-700 font-semibold">
-                      Action
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {/* Example row */}
-                  <tr className="border-b">
-                    <td className="py-3 px-4">1</td>
-                    <td className="py-3 px-4">Sep-2023</td>
-                    <td className="py-3 px-4">
-                      110 winners
-                      <br />
-                      20 referrals
-                    </td>
-                    <td className="py-3 px-4">Minimum 3 referrals</td>
-                    <td className="py-3 px-4">
-                      <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
-                        View List
-                      </button>
-                    </td>
-                  </tr>
-                  {/* Add more rows as needed */}
-                </tbody>
-              </table>
+        {/* similar products */}
 
-              {/* Responsive mobile card layout */}
-              <div className="md:hidden">
-                {/* Mobile card example */}
-                <div className="bg-white shadow-lg rounded-lg p-4 mb-4 border border-gray-200">
-                  <div className="flex justify-between items-center pb-2 border-b">
-                    <span className="text-gray-600 font-semibold">No</span>
-                    <span>1</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="text-gray-600 font-semibold">Date</span>
-                    <span>Sep-2023</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="text-gray-600 font-semibold">
-                      Winner Count
-                    </span>
-                    <span>110 winners, 20 referrals</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="text-gray-600 font-semibold">
-                      Condition
-                    </span>
-                    <span>Minimum 3 referrals</span>
-                  </div>
-                  <div className="flex justify-between items-center pt-2">
-                    <span className="text-gray-600 font-semibold">Action</span>
-                    <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200">
-                      View List
-                    </button>
-                  </div>
-                </div>
-                {/* Add more mobile card rows as needed */}
-              </div>
-            </div>
+        <section className="pt-10 ">
+          <h1 className="py-5 text-xl font-bold">Similer Products</h1>
+          <div className="flex gap-x-4 flex-wrap gap-y-5">
+            {Mens_Kurta.map((item) => (
+              <HomeSectionCard product={item} />
+            ))}
           </div>
         </section>
       </div>
