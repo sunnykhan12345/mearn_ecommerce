@@ -8,6 +8,8 @@ import HomePage from "./homepage/HomePage";
 import Product from "./customer/compoennts/product/Product";
 import ProductDetails from "./customer/compoennts/productdetails/ProductDetails";
 import Cart from "./customer/compoennts/cart/Cart";
+import CheckOut from "./customer/compoennts/checkout/CheckOut";
+import Orders from "./customer/compoennts/order/Orders";
 
 function App() {
   return (
@@ -17,7 +19,10 @@ function App() {
       {/* <HomePage /> */}
       {/* <Product /> */}
       {/* <ProductDetails /> */}
-      <Cart />
+      {/* <Cart /> */}
+      {/* <CheckOut /> */}
+      <Orders />
+
       <Footer />
     </div>
   );
