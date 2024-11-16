@@ -1,17 +1,3 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 "use client";
 
 import { Fragment, useState } from "react";
@@ -29,12 +15,15 @@ import {
   TabPanel,
   TabPanels,
 } from "@headlessui/react";
+import { Avatar } from "@mui/material";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { deepOrange } from "@mui/material/colors";
 
 const navigation = {
   categories: [
@@ -168,6 +157,19 @@ const navigation = {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLinkClick = () => {
+    setIsDropdownOpen(false); // Close dropdown on link click
+  };
+  const handleCategoryClick = (category, section, item) => {
+    navigate(`/${category.id}/${section.id}/${item.id}`); // Use navigate to change routes
+  };
 
   return (
     <div className="bg-white z-50">
@@ -358,7 +360,7 @@ export default function Navbar() {
               <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
-                    <Popover key={category.name} className="flex">
+                    <Popover key={category.name} className="flex z-20">
                       <div className="relative flex">
                         <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
                           {category.name}
@@ -423,12 +425,18 @@ export default function Navbar() {
                                     >
                                       {section.items.map((item) => (
                                         <li key={item.name} className="flex">
-                                          <a
-                                            href={item.href}
-                                            className="hover:text-gray-800"
+                                          <p
+                                            onClick={() =>
+                                              handleCategoryClick(
+                                                category,
+                                                section,
+                                                item
+                                              )
+                                            }
+                                            className="hover:text-gray-800 cursor-pointer"
                                           >
                                             {item.name}
-                                          </a>
+                                          </p>
                                         </li>
                                       ))}
                                     </ul>
@@ -456,6 +464,52 @@ export default function Navbar() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                  <div className="relative">
+                    {/* Sign in Button */}
+                    <Avatar
+                      sx={{ bgcolor: deepOrange[500] }}
+                      onClick={toggleDropdown}
+                      className="text-sm cursor-pointer font-medium text-gray-700 hover:text-gray-800"
+                    >
+                      s
+                    </Avatar>
+
+                    {/* Dropdown Menu */}
+                    {isDropdownOpen && (
+                      <div className="absolute right-0 mt-2 w-28 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <ul className="py-1">
+                          <li>
+                            <button
+                              href="#"
+                              onClick={handleLinkClick}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              Profile
+                            </button>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              onClick={() => navigate("/account/order")}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              My Orders
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              onClick={handleLinkClick}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              Logout
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  {/*  */}
                   <a
                     href="#"
                     className="text-sm font-medium text-gray-700 hover:text-gray-800"
